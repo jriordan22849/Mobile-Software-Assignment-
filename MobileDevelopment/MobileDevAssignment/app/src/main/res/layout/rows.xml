@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_label_book_name"
+        android:text="Book Name: "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_task_name"
+        android:layout_toRightOf="@+id/TextView_label_book_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_label_book_author"
+        android:text="Author: "
+        android:layout_below="@id/TextView_label_book_name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_task_"
+        android:layout_below="@id/TextView_label_book_name"
+        android:layout_toRightOf="@+id/TextView_label_book_author"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_label_book_category"
+        android:text="Category: "
+        android:layout_below="@id/TextView_label_book_author"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_book_category"
+        android:layout_below="@id/TextView_label_book_author"
+        android:layout_toRightOf="@+id/TextView_label_book_category"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_label_book_read"
+        android:text="Have Read: "
+        android:layout_below="@id/TextView_label_book_category"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_book_read"
+        android:layout_below="@id/TextView_label_book_category"
+        android:layout_toRightOf="@+id/TextView_label_book_read"/>
+</RelativeLayout>
