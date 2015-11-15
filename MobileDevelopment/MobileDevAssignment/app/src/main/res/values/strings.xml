@@ -4,4 +4,9 @@
     <string name="text">Book Table</string>
     <string name="submit">Submit</string>
     <string name="receive">Get Book(s)</string>
+    <string name="addButton">+</string>
+    <string name="Book_Authors">Book Authors</string>
+    <string name="Book_Names">Book Names</string>
+    <string name="addBookString">Insert Book Details</string>
+    <string name="goBack">Back</string>
 </resources>

@@ -11,9 +11,9 @@ import android.widget.TextView;
 /**
  * Created by macbookpro on 12/11/15.
  */
-public class MyCursorAdapter extends CursorAdapter {
+public class MyCursorAdapter2 extends CursorAdapter {
 
-    public MyCursorAdapter(Context context, Cursor cursor) {
+    public MyCursorAdapter2(Context context, Cursor cursor) {
         super(context, cursor, 0);
     }
 
@@ -21,7 +21,7 @@ public class MyCursorAdapter extends CursorAdapter {
     // you don't bind any data to the view at this point.
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.authorrow, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.booknames, parent, false);
     }
 
     // The bindView method is used to bind all data to a given view
@@ -29,11 +29,11 @@ public class MyCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
-        TextView bookAuthor = (TextView) view.findViewById(R.id.TextView_label_book_author);
+        TextView bookAuthor = (TextView) view.findViewById(R.id.TextView_label_book_name);
         // Extract properties from cursor
-        String author = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_AUTHOR));
+        String books = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_NAME));
         // Populate fields with extracted properties
-        bookAuthor.setText("Author: " + author);
+        bookAuthor.setText("Book Name: " + books);
 
     }
 }
