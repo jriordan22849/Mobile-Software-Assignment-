@@ -9,13 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Created by macbookpro on 15/11/15.
  */
+
+// This class displays the book names in a list to the user.
 public class listBooks extends Activity {
     DBManager db = new DBManager(this);
 
@@ -35,24 +41,25 @@ public class listBooks extends Activity {
             e.printStackTrace();
         }
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View view, int position, long arg) {
                 try {
-                    Cursor mycursor = (Cursor) av.getItemAtPosition(position);
-                    String selection = mycursor.getString(5);
-
+                    Cursor myCursor = (Cursor) av.getItemAtPosition(position);
+                    String selection = myCursor.getString(1);
                     Context context = getApplicationContext();
                     CharSequence text = selection;
-                    int duration = Toast.LENGTH_LONG;
+                    int dur = Toast.LENGTH_LONG;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                } catch(Exception e) {
+//                    Toast toast = Toast.makeText(context,text,dur);
+//                    toast.show();
+
+                    Intent selectedBookName = new Intent(listBooks.this, selectedBookDetails.class);
+                    selectedBookName.putExtra("SELECTED_NAME", selection);
+                    startActivity(selectedBookName);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -75,5 +82,9 @@ public class listBooks extends Activity {
             e.printStackTrace();
         }
     }
+
+    // select book from the list and to display its details using an intent.
+
+
 
 }

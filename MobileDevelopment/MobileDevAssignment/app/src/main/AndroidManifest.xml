@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".listBooks" />
         <activity android:name=".insertDetails" />
+        <activity android:name=".selectedBookDetails" />
+
 
     </application>
 

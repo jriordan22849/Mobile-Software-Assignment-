@@ -24,9 +24,9 @@ public class DBManager {
     static final String KEY_TASK_CATEGORY = "Category";
     static final String KEY_TASK_READ = "Have_Read";
 
-    private final Context context;
-    private MyDatabaseHelper DBHelper;
-    private SQLiteDatabase db;
+    final Context context;
+    MyDatabaseHelper DBHelper;
+    SQLiteDatabase db;
 
     private static final String CREATE_BOOK_TABLE = "create table Book (_id integer primary key autoincrement, " +
             "Book_name  TEXT, " +
@@ -74,7 +74,7 @@ public class DBManager {
         initialValues.put(KEY_TASK_NAME, name);
         initialValues.put(KEY_TASK_AUTHOR, author);
         initialValues.put(KEY_TASK_CATEGORY, category);
-        initialValues.put(KEY_TASK_READ,read);
+        initialValues.put(KEY_TASK_READ, read);
         return db.insert(TABLE_NAME, null, initialValues);
     }
 
@@ -92,5 +92,39 @@ public class DBManager {
 
     }
 
+    public Cursor selectAuthorDB()
+    {
+        Cursor mCursor = db.rawQuery(
+                "SELECT "+ KEY_TASK_AUTHOR + "FROM Book where Have_Read = 'Y';", null);
 
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        return mCursor;
+
+    }
+
+    public Cursor selectBookNamesDB()
+    {
+        Cursor mCursor = db.rawQuery(
+                "SELECT Book_name FROM Book where Have_Read = 'Y';", null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        return mCursor;
+
+    }
+
+    public Cursor getBookInformation(String bookName) {
+        Cursor bookInfo = db.rawQuery("SELECT * FROM BOOK where Book_Name = '"+ bookName + "';",null);
+
+        if (bookInfo != null) {
+            bookInfo.moveToFirst();
+        }
+
+        return bookInfo;
+    }
 }

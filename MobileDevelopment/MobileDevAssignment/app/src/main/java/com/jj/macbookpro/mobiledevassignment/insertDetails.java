@@ -11,10 +11,12 @@ import android.widget.Toast;
 
 /**
  * Created by macbookpro on 15/11/15.
+ * This class is used to inser the details entered in by the user into the database.
  */
 public class insertDetails extends Activity{
     // pass our context
     DBManager db = new DBManager(this);
+
     EditText bookName;
     EditText bookAuthor;
     EditText bookCategory;
@@ -23,6 +25,7 @@ public class insertDetails extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.insert_details_layout);
 
         Button setButton = (Button) findViewById(R.id.button_submit);
@@ -43,6 +46,7 @@ public class insertDetails extends Activity{
 
                     db.close();
                 } catch(Exception e) {
+
                     e.printStackTrace();
 
                     Context context = getApplicationContext();
@@ -59,6 +63,7 @@ public class insertDetails extends Activity{
 
     }
 
+    // An intent for the user to go back to the main screen. Button is displayed in the top left hand corner.
     public void goBackScreen(View view) {
         try {
             Intent lastScreen = new Intent(this, MainActivity.class);

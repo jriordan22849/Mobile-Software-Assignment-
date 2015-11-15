@@ -1,3 +1,8 @@
+/*
+Student Name: Jonathan Riordan
+Student ID: C13432152
+
+ */
 package com.jj.macbookpro.mobiledevassignment;
 
 import android.app.Activity;
@@ -14,14 +19,10 @@ import android.widget.Toast;
 import android.database.Cursor;
 
 
-
+// This is the first screen. It displays the authors in a list to the user
 public class MainActivity extends Activity {
     // pass our context
     DBManager db = new DBManager(this);
-    EditText bookName;
-    EditText bookAuthor;
-    EditText bookCategory;
-    EditText haveRead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,36 +30,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final ListView listView = (ListView) findViewById(R.id.listView_books);
+
+        //
         try {
             db.open();
             Cursor result = db.getAll();
             MyCursorAdapter cursorAdapter = new MyCursorAdapter(MainActivity.this, result);
             listView.setAdapter(cursorAdapter);
             db.close();
-        } catch (Exception e) {
+        }
+        // catch an exception if it occurs
+        catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> av, View view, int position, long arg) {
-                try {
-                    Cursor mycursor = (Cursor) av.getItemAtPosition(position);
-                    String selection = mycursor.getString(5);
 
-                    Context context = getApplicationContext();
-                    CharSequence text = selection;
-                    int duration = Toast.LENGTH_LONG;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
     }
 
     // New intent to display a list containing the book names.
@@ -80,4 +67,6 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
     }
+
+    //
 }

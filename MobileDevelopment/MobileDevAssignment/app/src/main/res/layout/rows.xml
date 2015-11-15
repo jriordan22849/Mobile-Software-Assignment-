@@ -10,45 +10,50 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_task_name"
+        android:id="@+id/TextView_bookName"
         android:layout_toRightOf="@+id/TextView_label_book_name"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TextView_label_book_author"
-        android:text="Author: "
-        android:layout_below="@id/TextView_label_book_name"/>
+        android:text="Book Auhtor: "
+        android:layout_below="@+id/TextView_label_book_name"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_task_"
-        android:layout_below="@id/TextView_label_book_name"
+        android:id="@+id/TextView_bookAuthor"
+        android:layout_below="@+id/TextView_bookName"
         android:layout_toRightOf="@+id/TextView_label_book_author"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TextView_label_book_category"
-        android:text="Category: "
-        android:layout_below="@id/TextView_label_book_author"/>
+        android:text="Book Category: "
+        android:layout_below="@+id/TextView_label_book_author"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_book_category"
-        android:layout_below="@id/TextView_label_book_author"
+        android:id="@+id/TextView_bookCategory"
+        android:layout_below="@+id/TextView_bookAuthor"
         android:layout_toRightOf="@+id/TextView_label_book_category"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_label_book_read"
-        android:text="Have Read: "
-        android:layout_below="@id/TextView_label_book_category"/>
+        android:id="@+id/TextView_label_book_have_read"
+        android:text="Book Read: "
+        android:layout_below="@+id/TextView_label_book_category"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_book_read"
-        android:layout_below="@id/TextView_label_book_category"
-        android:layout_toRightOf="@+id/TextView_label_book_read"/>
+        android:id="@+id/TextView_bookHaveRead"
+        android:layout_below="@+id/TextView_bookCategory"
+        android:layout_toRightOf="@+id/TextView_label_book_have_read"/>
+
+
 </RelativeLayout>
