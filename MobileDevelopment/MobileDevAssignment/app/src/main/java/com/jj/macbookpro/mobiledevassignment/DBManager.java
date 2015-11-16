@@ -94,7 +94,7 @@ public class DBManager {
 
     public Cursor getAll() {
         Cursor mCursor = db.rawQuery(
-                "SELECT DISTINCT * FROM Book where Have_Read = 'Yes';", null);
+                "SELECT DISTINCT * FROM Book;", null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();

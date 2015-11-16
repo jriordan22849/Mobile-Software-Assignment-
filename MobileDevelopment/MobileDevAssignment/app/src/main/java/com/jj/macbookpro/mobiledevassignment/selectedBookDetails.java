@@ -2,7 +2,9 @@ package com.jj.macbookpro.mobiledevassignment;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by macbookpro on 15/11/15.
@@ -60,17 +63,64 @@ public class selectedBookDetails extends Activity {
         }
     }
 
-    // Delete book from database. **Must add in ISBN for exact book to be deleted.***
+    public void alertMessage() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch(which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Toast.makeText(selectedBookDetails.this, "Yes Clicked",Toast.LENGTH_LONG).show();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        Toast.makeText(selectedBookDetails.this, "No Clicked",Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure")
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
+
+    // Delete book from database. A dialog box will appear, if the user selects yes, the book will be deleted, if the
+    // user selects no, the book wont be deleted and a break will occur.
     public void DeleteBook(View view) {
         try {
+            //alertMessage();
             db.open();
-            //String bookName = getIntent().getExtras().getString("SELECTED_NAME");
-            String bookid = getIntent().getExtras().getString("SELECTED_ISBN");
-            Cursor deleteBookInfo = db.delete(bookid);
-            db.close();
+            String bookName = getIntent().getExtras().getString("SELECTED_NAME");
 
-            Intent returnScreen = new Intent(selectedBookDetails.this,listBooks.class);
-            startActivity(returnScreen);
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch(which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            Toast.makeText(selectedBookDetails.this, "Book Deleted",Toast.LENGTH_LONG).show();
+
+                            String bookid = getIntent().getExtras().getString("SELECTED_ISBN");
+                            Cursor deleteBookInfo = db.delete(bookid);
+                            db.close();
+
+                            Intent returnScreen = new Intent(selectedBookDetails.this,listBooks.class);
+                            startActivity(returnScreen);
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            Toast.makeText(selectedBookDetails.this, "No Clicked",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to delete the book called: "+ bookName)
+                    .setPositiveButton("Yes",dialogClickListener)
+                    .setNegativeButton("No",dialogClickListener).show();
+
+
 
 
         } catch (Exception e) {

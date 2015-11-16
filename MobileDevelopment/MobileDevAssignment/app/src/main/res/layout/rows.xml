@@ -10,9 +10,9 @@
         android:text="Delete"
         android:id="@+id/button2"
         android:background="#ffffff"
+        android:onClick="DeleteBook"
         android:layout_alignTop="@+id/textView_book_table"
-        android:layout_alignParentEnd="true"
-        android:onClick="DeleteBook"/>
+        android:layout_alignParentEnd="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -48,9 +48,9 @@
         android:layout_height="wrap_content"
         android:text="Name:"
         android:id="@+id/textView_name"
-        android:layout_below="@+id/button3"
-        android:layout_toEndOf="@+id/button3"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_above="@+id/textView_author"
+        android:layout_alignStart="@+id/book_name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -176,7 +176,7 @@
         android:id="@+id/displayWReading"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_wReading"
-        android:layout_toEndOf="@+id/dipslayisbn" />
+        android:layout_toEndOf="@+id/textView_cReading" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
         android:id="@+id/displayhRead"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_hRead"
-        android:layout_alignEnd="@+id/displayComment" />
+        android:layout_toEndOf="@+id/textView_wReading" />
 
     <TextView
         android:layout_width="wrap_content"
