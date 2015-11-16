@@ -3,6 +3,7 @@ package com.jj.macbookpro.mobiledevassignment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,14 +42,38 @@ public class selectedBookDetails extends Activity {
             bookAuthor.setText(author);
             bookCategory.setText(category);
             havRead.setText(haveRead);
-
-
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Delete book from database. **Must add in ISBN for exact book to be deleted.***
+    public void DeleteBook(View view) {
+        try {
+            db.open();
+            String bookName = getIntent().getExtras().getString("SELECTED_NAME");
+            Cursor deleteBookInfo = db.delete(bookName);
+            db.close();
+
+            Intent returnScreen = new Intent(selectedBookDetails.this,listBooks.class);
+            startActivity(returnScreen);
 
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void EditBook(View view) {
+        try {
+            db.open();
+
+            db.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -130,4 +130,14 @@ public class DBManager {
 
         return bookInfo;
     }
+
+    public Cursor delete(String name) {
+        Cursor deleteBook = db.rawQuery("DELETE FROM BOOK WHERE Book_Name ='"+ name + "';",null);
+
+        if (deleteBook != null) {
+            deleteBook.moveToFirst();
+        }
+
+        return  deleteBook;
+    }
 }
