@@ -21,6 +21,7 @@
         <activity android:name=".listBooks" />
         <activity android:name=".insertDetails" />
         <activity android:name=".selectedBookDetails" />
+        <activity android:name=".selectedAuthor" />
 
 
     </application>

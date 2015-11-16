@@ -92,10 +92,13 @@ public class DBManager {
 
     }
 
-    public Cursor selectAuthorDB()
+    // Return a cursor contain distinct author names to be displayed.
+    public Cursor getDistinctAuthor()
     {
-        Cursor mCursor = db.rawQuery(
-                "SELECT "+ KEY_TASK_AUTHOR + "FROM Book where Have_Read = 'Y';", null);
+        //String[] column = new String[] {"Author"};
+        //String whereClause = "Author = 'Y'";
+        //Cursor mCursor = db.query(true,TABLE_NAME,column,null,null,null,null,null,null);
+        Cursor mCursor = db.rawQuery("SELECT DISTINCT "+KEY_TASK_AUTHOR+" as _id from Book where Have_Read = 'Y';",null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -105,18 +108,18 @@ public class DBManager {
 
     }
 
-    public Cursor selectBookNamesDB()
+    public Cursor selectAuthorDB(String name)
     {
-        Cursor mCursor = db.rawQuery(
-                "SELECT Book_name FROM Book where Have_Read = 'Y';", null);
+        Cursor bookInfo = db.rawQuery("SELECT * FROM BOOK where Author = '"+ name + "';",null);
 
-        if (mCursor != null) {
-            mCursor.moveToFirst();
+        if (bookInfo != null) {
+            bookInfo.moveToFirst();
         }
 
-        return mCursor;
+        return bookInfo;
 
     }
+
 
     public Cursor getBookInformation(String bookName) {
         Cursor bookInfo = db.rawQuery("SELECT * FROM BOOK where Book_Name = '"+ bookName + "';",null);

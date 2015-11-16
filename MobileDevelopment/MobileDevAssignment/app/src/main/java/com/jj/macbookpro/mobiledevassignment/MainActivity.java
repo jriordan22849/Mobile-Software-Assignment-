@@ -44,6 +44,29 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> av, View view, int position, long arg) {
+                try {
+                    Cursor myCursor = (Cursor) av.getItemAtPosition(position);
+                    String selection = myCursor.getString(2);
+                    Context context = getApplicationContext();
+                    CharSequence text = selection;
+                    int dur = Toast.LENGTH_LONG;
+
+//                    Toast toast = Toast.makeText(context,text,dur);
+//                    toast.show();
+
+
+                    Intent selectedAuthorName = new Intent(MainActivity.this, selectedAuthor.class);
+                    selectedAuthorName.putExtra("SELECTED_AUTHOR", selection);
+                    startActivity(selectedAuthorName);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
 
     }
@@ -57,6 +80,18 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
     }
+
+    // if the user selects author autton, refresh the page again.
+    // This is used for error checking so the app doesnt shut down.
+    public void listBookAuthor(View view) {
+        try {
+            Intent myNewActivity = new Intent(this, MainActivity.class);
+            startActivity(myNewActivity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // New intent to to add book details to the database.
     public void addBook(View view) {

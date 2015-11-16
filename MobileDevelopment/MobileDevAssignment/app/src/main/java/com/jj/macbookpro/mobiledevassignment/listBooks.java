@@ -41,6 +41,7 @@ public class listBooks extends Activity {
             e.printStackTrace();
         }
 
+        // select book name from the list and create an intent
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> av, View view, int position, long arg) {
@@ -67,6 +68,16 @@ public class listBooks extends Activity {
     public void listBookAuthor(View view) {
         try {
             Intent myNewActivity = new Intent(this, MainActivity.class);
+            startActivity(myNewActivity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // if the list by book name is clicked, refresh the page.
+    public void listBookNames(View view) {
+        try {
+            Intent myNewActivity = new Intent(this, listBooks.class);
             startActivity(myNewActivity);
         } catch (Exception e) {
             e.printStackTrace();

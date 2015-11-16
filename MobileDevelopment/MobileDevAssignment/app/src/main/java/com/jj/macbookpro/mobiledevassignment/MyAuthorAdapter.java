@@ -11,9 +11,9 @@ import android.widget.TextView;
 /**
  * Created by macbookpro on 12/11/15.
  */
-public class MyCursorAdapter extends CursorAdapter {
+public class MyAuthorAdapter extends CursorAdapter {
 
-    public MyCursorAdapter(Context context, Cursor cursor) {
+    public MyAuthorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
     }
 
@@ -21,7 +21,7 @@ public class MyCursorAdapter extends CursorAdapter {
     // you don't bind any data to the view at this point.
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.authorrow, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.author_books_layout, parent, false);
     }
 
     // The bindView method is used to bind all data to a given view
@@ -29,12 +29,15 @@ public class MyCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
-
-        TextView bookAuthor = (TextView) view.findViewById(R.id.TextView_label_book_author);
+        TextView bookName = (TextView) view.findViewById(R.id.book_name_author);
+        TextView bookCategory = (TextView) view.findViewById(R.id.book_category_author);
         // Extract properties from cursor
-        String author = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_AUTHOR));
+        String category = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_CATEGORY));
+        String bookNameColumn = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_NAME));
         // Populate fields with extracted properties
-        bookAuthor.setText("Author: " + author);
+        bookName.setText("Book Name: " + bookNameColumn);
+        bookCategory.setText("Category: " +category);
+
 
     }
 }
