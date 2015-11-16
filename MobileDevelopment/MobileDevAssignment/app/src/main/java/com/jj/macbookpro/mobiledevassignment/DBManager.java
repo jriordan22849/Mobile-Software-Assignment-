@@ -82,7 +82,7 @@ public class DBManager {
     public Cursor getAll()
     {
         Cursor mCursor = db.rawQuery(
-                "SELECT * FROM Book where Have_Read = 'Y';", null);
+                "SELECT DISTINCT * FROM Book where Have_Read = 'Y';", null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -95,10 +95,10 @@ public class DBManager {
     // Return a cursor contain distinct author names to be displayed.
     public Cursor getDistinctAuthor()
     {
-        //String[] column = new String[] {"Author"};
+        String[] column = new String[] {KEY_TASK_AUTHOR};
         //String whereClause = "Author = 'Y'";
         //Cursor mCursor = db.query(true,TABLE_NAME,column,null,null,null,null,null,null);
-        Cursor mCursor = db.rawQuery("SELECT DISTINCT "+KEY_TASK_AUTHOR+" as _id from Book where Have_Read = 'Y';",null);
+        Cursor mCursor = db.query(true,TABLE_NAME,null,null,null,KEY_TASK_AUTHOR,null,null,null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();

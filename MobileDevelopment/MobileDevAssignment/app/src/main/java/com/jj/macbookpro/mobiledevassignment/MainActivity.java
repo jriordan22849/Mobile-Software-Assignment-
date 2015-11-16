@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         //
         try {
             db.open();
-            Cursor result = db.getAll();
+            Cursor result = db.getDistinctAuthor();
             MyCursorAdapter cursorAdapter = new MyCursorAdapter(MainActivity.this, result);
             listView.setAdapter(cursorAdapter);
             db.close();

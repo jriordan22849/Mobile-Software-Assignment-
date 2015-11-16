@@ -42,9 +42,12 @@ public class insertDetails extends Activity{
                     haveRead = (EditText) findViewById(R.id.editText_bookhave);
 
                     db.insertBook(bookName.getText().toString(), bookAuthor.getText().toString(),
-                            bookCategory.getText().toString(),haveRead.getText().toString());
-
+                            bookCategory.getText().toString(), haveRead.getText().toString());
                     db.close();
+
+                    // return to the home screen.
+                    Intent returnScreen = new Intent(insertDetails.this, MainActivity.class);
+                    startActivity(returnScreen);
                 } catch(Exception e) {
 
                     e.printStackTrace();
