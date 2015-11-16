@@ -48,6 +48,7 @@ public class listBooks extends Activity {
                 try {
                     Cursor myCursor = (Cursor) av.getItemAtPosition(position);
                     String selection = myCursor.getString(1);
+                    String passISBN = myCursor.getString(5);
                     Context context = getApplicationContext();
                     CharSequence text = selection;
                     int dur = Toast.LENGTH_LONG;
@@ -57,6 +58,7 @@ public class listBooks extends Activity {
 
                     Intent selectedBookName = new Intent(listBooks.this, selectedBookDetails.class);
                     selectedBookName.putExtra("SELECTED_NAME", selection);
+                    selectedBookName.putExtra("SELECTED_ISBN", passISBN);
                     startActivity(selectedBookName);
                 } catch (Exception e) {
                     e.printStackTrace();

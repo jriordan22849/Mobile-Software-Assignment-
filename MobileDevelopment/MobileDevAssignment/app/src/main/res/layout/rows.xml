@@ -3,96 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Books table"
-        android:id="@+id/textView_book_table"
-        android:textSize="25dp"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_label_book_name"
-        android:text="Book Name: "
-        android:layout_above="@+id/TextView_label_book_author"
-        android:layout_alignStart="@+id/TextView_label_book_author"
-        android:layout_marginBottom="45dp"
-        android:textSize="20dp" />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_label_book_author"
-        android:text="Book Auhtor: "
-        android:layout_above="@+id/TextView_label_book_category"
-        android:layout_alignStart="@+id/TextView_label_book_category"
-        android:layout_marginBottom="45dp"
-        android:textSize="20dp" />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_label_book_category"
-        android:text="Book Category: "
-        android:layout_marginStart="45dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_label_book_have_read"
-        android:text="Book Read: "
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/TextView_label_book_category"
-        android:layout_alignStart="@+id/TextView_label_book_category"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/TextView_bookName"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/TextView_label_book_name"
-        android:layout_toEndOf="@+id/TextView_label_book_author" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/TextView_bookAuthor"
-        android:layout_alignBottom="@+id/TextView_label_book_author"
-        android:layout_alignStart="@+id/TextView_bookName"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/TextView_bookCategory"
-        android:layout_alignBottom="@+id/TextView_label_book_category"
-        android:layout_toEndOf="@+id/TextView_label_book_category"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/TextView_bookHaveRead"
-        android:layout_alignBottom="@+id/TextView_label_book_have_read"
-        android:layout_toEndOf="@+id/TextView_label_book_have_read"
-        android:textSize="20dp" />
-
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -111,9 +21,179 @@
         android:text="Edit"
         android:id="@+id/button3"
         android:background="#ffffff"
+        android:onClick="EditBook"
         android:layout_alignTop="@+id/textView_book_table"
-        android:layout_alignParentStart="true"
-        android:onClick="EditBook"/>
+        android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Books table"
+        android:id="@+id/textView_book_table"
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/book_name"
+        android:layout_below="@+id/button3"
+        android:layout_toEndOf="@+id/button3"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:id="@+id/textView_name"
+        android:layout_below="@+id/button3"
+        android:layout_toEndOf="@+id/button3"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author:"
+        android:id="@+id/textView_author"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/book_name"
+        android:layout_alignStart="@+id/book_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category:"
+        android:id="@+id/textView_category"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView_author"
+        android:layout_alignStart="@+id/textView_author" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comment:"
+        android:id="@+id/textView_comment"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView_category"
+        android:layout_alignStart="@+id/textView_category" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ISBN:"
+        android:id="@+id/textView_isbn"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView_comment"
+        android:layout_alignStart="@+id/textView_comment"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently Reading:"
+        android:id="@+id/textView_cReading"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView_isbn"
+        android:layout_alignStart="@+id/textView_isbn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Want to Read:"
+        android:id="@+id/textView_wReading"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView_cReading"
+        android:layout_alignStart="@+id/textView_isbn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Have Read:"
+        android:id="@+id/textView_hRead"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView_wReading"
+        android:layout_alignStart="@+id/textView_isbn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displayname"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView_name"
+        android:layout_alignStart="@+id/textView_book_table" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displayauthor"
+        android:textSize="20dp"
+        android:layout_above="@+id/textView_category"
+        android:layout_alignStart="@+id/displayname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displaycategorytextView2"
+        android:textSize="20dp"
+        android:layout_above="@+id/textView_comment"
+        android:layout_toEndOf="@+id/textView_comment" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Textv"
+        android:id="@+id/displayComment"
+        android:textSize="20dp"
+        android:layout_above="@+id/textView_isbn"
+        android:layout_toEndOf="@+id/textView_hRead" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/dipslayisbn"
+        android:textSize="20dp"
+        android:layout_above="@+id/textView_cReading"
+        android:layout_toEndOf="@+id/textView_name" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displayWReading"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView_wReading"
+        android:layout_toEndOf="@+id/dipslayisbn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displayhRead"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView_hRead"
+        android:layout_alignEnd="@+id/displayComment" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/displycReading"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView_cReading"
+        android:layout_toEndOf="@+id/textView_book_table" />
 
 </RelativeLayout>

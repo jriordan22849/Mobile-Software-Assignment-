@@ -15,13 +15,17 @@ public class DBManager {
 
     private static final int DATABASE_VERSION = 1;
 
-    static final String DATABASE_NAME = "BookTable";
+    static final String DATABASE_NAME = "MyBookTable";
     static final String TABLE_NAME = "Book";
 
     static final String KEY_ID = "_id";
     static final String KEY_TASK_NAME = "Book_name";
     static final String KEY_TASK_AUTHOR = "Author";
     static final String KEY_TASK_CATEGORY = "Category";
+    static final String KEY_TASK_COMMENT = "Comment";
+    static final String KEY_TASK_ISBN = "ISBN";
+    static final String KEY_TASK_CREADING = "Currently_Reading";
+    static final String KEY_TASK_WREADING = "Want_To_Read";
     static final String KEY_TASK_READ = "Have_Read";
 
     final Context context;
@@ -31,7 +35,11 @@ public class DBManager {
     private static final String CREATE_BOOK_TABLE = "create table Book (_id integer primary key autoincrement, " +
             "Book_name  TEXT, " +
             "Author  TEXT, " +
-            "Category  TEXT, " +
+            "Category  TEXT," +
+            "Comment    TEXT," +
+            "ISBN   TEXT," +
+            "Currently_Reading  TEXT," +
+            "Want_To_Read   TEXT, " +
             "Have_Read  TEXT)";
 
     public DBManager(Context ctx) {
@@ -69,20 +77,24 @@ public class DBManager {
         DBHelper.close();
     }
 
-    public long insertBook(String name, String author, String category, String read) {
+    public long insertBook(String name, String author, String category, String comment,
+                           String isbn, String cReading, String wRead, String read) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TASK_NAME, name);
         initialValues.put(KEY_TASK_AUTHOR, author);
         initialValues.put(KEY_TASK_CATEGORY, category);
+        initialValues.put(KEY_TASK_COMMENT, comment);
+        initialValues.put(KEY_TASK_ISBN, isbn);
+        initialValues.put(KEY_TASK_CREADING, cReading);
+        initialValues.put(KEY_TASK_WREADING, wRead);
         initialValues.put(KEY_TASK_READ, read);
         return db.insert(TABLE_NAME, null, initialValues);
     }
 
 
-    public Cursor getAll()
-    {
+    public Cursor getAll() {
         Cursor mCursor = db.rawQuery(
-                "SELECT DISTINCT * FROM Book where Have_Read = 'Y';", null);
+                "SELECT DISTINCT * FROM Book where Have_Read = 'Yes';", null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -131,8 +143,8 @@ public class DBManager {
         return bookInfo;
     }
 
-    public Cursor delete(String name) {
-        Cursor deleteBook = db.rawQuery("DELETE FROM BOOK WHERE Book_Name ='"+ name + "';",null);
+    public Cursor delete(String bookid) {
+        Cursor deleteBook = db.rawQuery("DELETE FROM BOOK WHERE ISBN ='"+ bookid + "';",null);
 
         if (deleteBook != null) {
             deleteBook.moveToFirst();

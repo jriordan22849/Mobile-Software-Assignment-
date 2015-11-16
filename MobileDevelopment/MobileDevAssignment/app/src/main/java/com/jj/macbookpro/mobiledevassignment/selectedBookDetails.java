@@ -24,7 +24,7 @@ public class selectedBookDetails extends Activity {
 
         // Get info passed with intent
         String bookName = getIntent().getExtras().getString("SELECTED_NAME");
-        TextView name = (TextView) findViewById(R.id.TextView_bookName);
+        TextView name = (TextView) findViewById(R.id.displayname);
         name.setText(bookName);
         // create a cursor, call a function to the database class witht the book name
         // that was selected and return the book information and then printed to the user screen
@@ -33,14 +33,26 @@ public class selectedBookDetails extends Activity {
             Cursor information = db.getBookInformation(bookName);
             String author = information.getString(2);
             String category = information.getString(3);
-            String haveRead = information.getString(4);
+            String comment = information.getString(4);
+            String isbn = information.getString(5);
+            String creading = information.getString(6);
+            String wreading = information.getString(7);
+            String haveRead = information.getString(8);
 
-            TextView bookAuthor = (TextView) findViewById(R.id.TextView_bookAuthor);
-            TextView bookCategory = (TextView) findViewById(R.id.TextView_bookCategory);
-            TextView havRead = (TextView) findViewById(R.id.TextView_bookHaveRead);
+            TextView bookAuthor = (TextView) findViewById(R.id.displayauthor);
+            TextView bookCategory = (TextView) findViewById(R.id.displaycategorytextView2);
+            TextView bookComment = (TextView) findViewById(R.id.displayComment);
+            TextView bookisbn = (TextView) findViewById(R.id.dipslayisbn);
+            TextView bookcReading = (TextView) findViewById(R.id.displycReading);
+            TextView bookwReading = (TextView) findViewById(R.id.displayWReading);
+            TextView havRead = (TextView) findViewById(R.id.displayhRead);
 
             bookAuthor.setText(author);
             bookCategory.setText(category);
+            bookComment.setText(comment);
+            bookisbn.setText(isbn);
+            bookcReading.setText(creading);
+            bookwReading.setText(wreading);
             havRead.setText(haveRead);
             db.close();
         } catch (Exception e) {
@@ -52,8 +64,9 @@ public class selectedBookDetails extends Activity {
     public void DeleteBook(View view) {
         try {
             db.open();
-            String bookName = getIntent().getExtras().getString("SELECTED_NAME");
-            Cursor deleteBookInfo = db.delete(bookName);
+            //String bookName = getIntent().getExtras().getString("SELECTED_NAME");
+            String bookid = getIntent().getExtras().getString("SELECTED_ISBN");
+            Cursor deleteBookInfo = db.delete(bookid);
             db.close();
 
             Intent returnScreen = new Intent(selectedBookDetails.this,listBooks.class);

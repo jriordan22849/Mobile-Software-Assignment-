@@ -38,6 +38,5 @@ public class MyAuthorAdapter extends CursorAdapter {
         bookName.setText("Book Name: " + bookNameColumn);
         bookCategory.setText("Category: " +category);
 
-
     }
 }

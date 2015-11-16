@@ -20,6 +20,10 @@ public class insertDetails extends Activity{
     EditText bookName;
     EditText bookAuthor;
     EditText bookCategory;
+    EditText bookComment;
+    EditText ISBN;
+    EditText currentlyRading;
+    EditText wanttoread;
     EditText haveRead;
 
     @Override
@@ -39,10 +43,17 @@ public class insertDetails extends Activity{
                     bookName = (EditText) findViewById(R.id.editText_bookname);
                     bookAuthor = (EditText) findViewById(R.id.editText_booknameauthor);
                     bookCategory = (EditText) findViewById(R.id.editText_bookcategory);
+                    bookComment = (EditText) findViewById(R.id.editText_comment);
+                    ISBN = (EditText) findViewById(R.id.editText_ISBN);
+                    currentlyRading = (EditText) findViewById(R.id.currently_reading);
+                    wanttoread = (EditText) findViewById(R.id.wantToRead);
                     haveRead = (EditText) findViewById(R.id.editText_bookhave);
 
+
                     db.insertBook(bookName.getText().toString(), bookAuthor.getText().toString(),
-                            bookCategory.getText().toString(), haveRead.getText().toString());
+                            bookCategory.getText().toString(),bookComment.getText().toString(),
+                            ISBN.getText().toString(), currentlyRading.getText().toString(),
+                            wanttoread.getText().toString(), haveRead.getText().toString());
                     db.close();
 
                     // return to the home screen.

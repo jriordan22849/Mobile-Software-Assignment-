@@ -40,12 +40,45 @@
         android:layout_alignParentStart="true" />
 
     <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comment"
+        android:layout_below="@+id/editText_bookcategory"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/editText_ISBN"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="ISBN"
+        android:layout_below="@+id/editText_comment"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/currently_reading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Currently Reading"
+        android:layout_below="@+id/editText_ISBN"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/wantToRead"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Want to Read"
+        android:layout_below="@+id/currently_reading"
+        android:layout_alignParentStart="true" />
+
+    <EditText
         android:id="@+id/editText_bookhave"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Have Read"
-        android:layout_below="@+id/editText_bookcategory"
+        android:layout_below="@+id/wantToRead"
         android:layout_alignParentStart="true" />
+
 
     <Button
         android:id="@+id/button_submit"
