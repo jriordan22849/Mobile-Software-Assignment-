@@ -15,7 +15,7 @@ public class DBManager {
 
     private static final int DATABASE_VERSION = 1;
 
-    static final String DATABASE_NAME = "MyBookTable";
+    static final String DATABASE_NAME = "MyDB";
     static final String TABLE_NAME = "Book";
 
     static final String KEY_ID = "_id";
