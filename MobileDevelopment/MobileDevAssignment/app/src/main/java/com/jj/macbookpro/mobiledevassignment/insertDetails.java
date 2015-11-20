@@ -33,9 +33,8 @@ public class insertDetails extends Activity{
     CheckBox checkedRead, checkWantToRead,checkCurrentlyReading;
 
     String strngCheckedRead = null;
-    String stringCheckWantToRead = null;
+    //String stringCheckWantToRead = null;
     String stringCheckCurrentlyReading = null;
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class insertDetails extends Activity{
         setContentView(R.layout.insert_details_layout);
 
         checkedRead = (CheckBox) findViewById(R.id.editText_bookhave);
-        checkWantToRead = (CheckBox) findViewById(R.id.wantToRead);
+        //checkWantToRead = (CheckBox) findViewById(R.id.wantToRead);
         checkCurrentlyReading = (CheckBox) findViewById(R.id.currently_reading);
 
 
@@ -64,12 +63,12 @@ public class insertDetails extends Activity{
                     }
 
                     // checkbox for user if they want to read the book
-                    if(checkWantToRead.isChecked()) {
-                        stringCheckWantToRead = "True";
-                    }
-                    else{
-                        stringCheckWantToRead = "False";
-                    }
+//                    if(checkWantToRead.isChecked()) {
+//                        stringCheckWantToRead = "True";
+//                    }
+//                    else{
+//                        stringCheckWantToRead = "False";
+//                    }
 
                     // checkbox for user to tick if they are currenlty reading the book
                     if(checkCurrentlyReading.isChecked()) {
@@ -91,14 +90,14 @@ public class insertDetails extends Activity{
                     //haveRead = (EditText) findViewById(R.id.editText_bookhave);
 
 
-                    db.insertBook(bookName.getText().toString(),
-                            bookAuthor.getText().toString(),
-                            bookCategory.getText().toString(),
-                            bookComment.getText().toString(),
-                            ISBN.getText().toString(),
-                            stringCheckCurrentlyReading,
-                            stringCheckWantToRead,
-                            strngCheckedRead);
+                        db.insertBook(bookName.getText().toString(),
+                                bookAuthor.getText().toString(),
+                                bookCategory.getText().toString(),
+                                bookComment.getText().toString(),
+                                ISBN.getText().toString(),
+                                stringCheckCurrentlyReading,
+                                strngCheckedRead);
+
 
 
                     db.close();

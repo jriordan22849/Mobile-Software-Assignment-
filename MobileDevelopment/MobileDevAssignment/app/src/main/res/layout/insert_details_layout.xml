@@ -30,7 +30,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_bookname"
-        android:layout_alignEnd="@+id/editText_bookhave" />
+        android:layout_alignEnd="@+id/editText_bookname" />
     <EditText
         android:id="@+id/editText_bookcategory"
         android:layout_width="fill_parent"
@@ -65,18 +65,11 @@
 
 
 
-    <CheckBox android:id="@+id/wantToRead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do you want to read the book?"
-        android:layout_below="@+id/currently_reading" />
-
-
     <CheckBox android:id="@+id/editText_bookhave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Have you completed the book?"
-        android:layout_below="@+id/wantToRead" />
+        android:layout_below="@+id/currently_reading" />
 
 
     <Button

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
-    <Button
+    <ImageButton
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
         android:id="@+id/button2"
-        android:background="#ffffff"
+        android:background="#FFFFFFFF"
         android:onClick="DeleteBook"
+        android:layout_marginEnd="35dp"
         android:layout_alignTop="@+id/textView_book_table"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/deleteicon"/>
 
-    <Button
+    <ImageButton
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +25,9 @@
         android:background="#ffffff"
         android:onClick="EditBook"
         android:layout_alignTop="@+id/textView_book_table"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/editicon"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +35,7 @@
         android:text="Books table"
         android:id="@+id/textView_book_table"
         android:textSize="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -41,7 +45,8 @@
         android:id="@+id/book_name"
         android:layout_below="@+id/button3"
         android:layout_toEndOf="@+id/button3"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,8 +54,8 @@
         android:text="Name:"
         android:id="@+id/textView_name"
         android:textSize="20dp"
-        android:layout_above="@+id/textView_author"
-        android:layout_alignStart="@+id/book_name" />
+        android:layout_alignTop="@+id/book_name"
+        android:layout_alignStart="@+id/button3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,9 +63,9 @@
         android:text="Author:"
         android:id="@+id/textView_author"
         android:textSize="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="29dp"
         android:layout_below="@+id/book_name"
-        android:layout_alignStart="@+id/book_name" />
+        android:layout_alignStart="@+id/textView_name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -104,15 +109,6 @@
         android:layout_below="@+id/textView_isbn"
         android:layout_alignStart="@+id/textView_isbn" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Want to Read:"
-        android:id="@+id/textView_wReading"
-        android:textSize="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView_cReading"
-        android:layout_alignStart="@+id/textView_isbn" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -120,9 +116,9 @@
         android:text="Have Read:"
         android:id="@+id/textView_hRead"
         android:textSize="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView_wReading"
-        android:layout_alignStart="@+id/textView_isbn" />
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView_cReading"
+        android:layout_alignStart="@+id/textView_cReading" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -131,7 +127,7 @@
         android:id="@+id/displayname"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_name"
-        android:layout_alignStart="@+id/textView_book_table" />
+        android:layout_toEndOf="@+id/textView_author" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -148,17 +144,17 @@
         android:text="New Text"
         android:id="@+id/displaycategorytextView2"
         android:textSize="20dp"
-        android:layout_above="@+id/textView_comment"
-        android:layout_toEndOf="@+id/textView_comment" />
+        android:layout_alignTop="@+id/textView_category"
+        android:layout_toEndOf="@+id/textView_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Textv"
+        android:text="New Text"
         android:id="@+id/displayComment"
         android:textSize="20dp"
-        android:layout_above="@+id/textView_isbn"
-        android:layout_toEndOf="@+id/textView_hRead" />
+        android:layout_alignTop="@+id/textView_comment"
+        android:layout_toEndOf="@+id/textView_comment" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -166,17 +162,19 @@
         android:text="New Text"
         android:id="@+id/dipslayisbn"
         android:textSize="20dp"
-        android:layout_above="@+id/textView_cReading"
-        android:layout_toEndOf="@+id/textView_name" />
+        android:layout_alignTop="@+id/textView_isbn"
+        android:layout_alignStart="@+id/book_name" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/displayWReading"
+        android:id="@+id/displycReading"
         android:textSize="20dp"
-        android:layout_alignTop="@+id/textView_wReading"
+        android:layout_alignBottom="@+id/textView_cReading"
         android:layout_toEndOf="@+id/textView_cReading" />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -185,15 +183,6 @@
         android:id="@+id/displayhRead"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_hRead"
-        android:layout_toEndOf="@+id/textView_wReading" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/displycReading"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/textView_cReading"
-        android:layout_toEndOf="@+id/textView_book_table" />
+        android:layout_toEndOf="@+id/textView_hRead" />
 
 </RelativeLayout>

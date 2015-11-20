@@ -42,8 +42,6 @@ public class MyAuthorAdapter extends CursorAdapter {
         String userCompletedBook = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_READ));
 
 
-
-
         // to check to see if the user is currently reading the book,
         // if so, display image on the list view beside the book name.
         if((userCurrentlyReading.equals("True") &&

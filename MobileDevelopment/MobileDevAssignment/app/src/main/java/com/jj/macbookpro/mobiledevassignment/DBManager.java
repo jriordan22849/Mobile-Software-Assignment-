@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ public class DBManager {
 
     private static final int DATABASE_VERSION = 1;
 
-    static final String DATABASE_NAME = "MyDB";
+    static final String DATABASE_NAME = "MyDataBase";
     static final String TABLE_NAME = "Book";
 
     static final String KEY_ID = "_id";
@@ -39,7 +40,6 @@ public class DBManager {
             "Comment    TEXT," +
             "ISBN   TEXT," +
             "Currently_Reading  TEXT," +
-            "Want_To_Read   TEXT, " +
             "Have_Read  TEXT)";
 
     public DBManager(Context ctx) {
@@ -78,16 +78,19 @@ public class DBManager {
     }
 
     public long insertBook(String name, String author, String category, String comment,
-                           String isbn, String cReading, String wRead, String read) {
+                           String isbn, String cReading, String read) {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_TASK_NAME, name);
-        initialValues.put(KEY_TASK_AUTHOR, author);
-        initialValues.put(KEY_TASK_CATEGORY, category);
-        initialValues.put(KEY_TASK_COMMENT, comment);
-        initialValues.put(KEY_TASK_ISBN, isbn);
-        initialValues.put(KEY_TASK_CREADING, cReading);
-        initialValues.put(KEY_TASK_WREADING, wRead);
-        initialValues.put(KEY_TASK_READ, read);
+
+        if(!name.equals("") || !author.equals("") || !isbn.equals("")|| !category.equals("")) {
+            initialValues.put(KEY_TASK_NAME, name);
+            initialValues.put(KEY_TASK_AUTHOR, author);
+            initialValues.put(KEY_TASK_CATEGORY, category);
+            initialValues.put(KEY_TASK_COMMENT, comment);
+            initialValues.put(KEY_TASK_ISBN, isbn);
+            initialValues.put(KEY_TASK_CREADING, cReading);
+            //initialValues.put(KEY_TASK_WREADING, wRead);
+            initialValues.put(KEY_TASK_READ, read);
+        }
         return db.insert(TABLE_NAME, null, initialValues);
     }
 

@@ -39,15 +39,15 @@ public class selectedBookDetails extends Activity {
             String comment = information.getString(4);
             String isbn = information.getString(5);
             String creading = information.getString(6);
-            String wreading = information.getString(7);
-            String haveRead = information.getString(8);
+            //String wreading = information.getString(7);
+            String haveRead = information.getString(7);
 
             TextView bookAuthor = (TextView) findViewById(R.id.displayauthor);
             TextView bookCategory = (TextView) findViewById(R.id.displaycategorytextView2);
             TextView bookComment = (TextView) findViewById(R.id.displayComment);
             TextView bookisbn = (TextView) findViewById(R.id.dipslayisbn);
             TextView bookcReading = (TextView) findViewById(R.id.displycReading);
-            TextView bookwReading = (TextView) findViewById(R.id.displayWReading);
+//            TextView bookwReading = (TextView) findViewById(R.id.displayWReading);
             TextView havRead = (TextView) findViewById(R.id.displayhRead);
 
             bookAuthor.setText(author);
@@ -55,7 +55,7 @@ public class selectedBookDetails extends Activity {
             bookComment.setText(comment);
             bookisbn.setText(isbn);
             bookcReading.setText(creading);
-            bookwReading.setText(wreading);
+//            bookwReading.setText(wreading);
             havRead.setText(haveRead);
             db.close();
         } catch (Exception e) {
@@ -109,7 +109,6 @@ public class selectedBookDetails extends Activity {
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
-                            Toast.makeText(selectedBookDetails.this, "No Clicked",Toast.LENGTH_LONG).show();
                             break;
                     }
                 }
