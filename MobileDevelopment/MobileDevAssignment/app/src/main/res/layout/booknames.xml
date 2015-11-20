@@ -13,9 +13,35 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_author"
+        android:id="@+id/TextView_name"
         android:layout_toRightOf="@+id/TextView_label_book_name"
         android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_label_category_name"
+        android:text="Category: "
+        android:textSize="20dp"
+        android:layout_below="@+id/TextView_label_book_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_category_name"
+        android:layout_toRightOf="@+id/TextView_label_category_name"
+        android:textSize="20dp"
+        android:layout_below="@+id/TextView_name"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:id="@+id/imageRead"
+        android:layout_alignBottom="@+id/TextView_category_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp" />
+
+
 
 
 </RelativeLayout>

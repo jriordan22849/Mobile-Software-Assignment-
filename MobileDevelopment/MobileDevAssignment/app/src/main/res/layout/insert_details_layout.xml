@@ -75,7 +75,7 @@
     <CheckBox android:id="@+id/editText_bookhave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have you read the book?"
+        android:text="Have you completed the book?"
         android:layout_below="@+id/wantToRead" />
 
 
