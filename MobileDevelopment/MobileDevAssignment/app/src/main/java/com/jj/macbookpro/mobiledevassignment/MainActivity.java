@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    // if the user selects author autton, refresh the page again.
+    // if the user selects author button, refresh the page again.
     // This is used for error checking so the app doesnt shut down.
     public void listBookAuthor(View view) {
         try {

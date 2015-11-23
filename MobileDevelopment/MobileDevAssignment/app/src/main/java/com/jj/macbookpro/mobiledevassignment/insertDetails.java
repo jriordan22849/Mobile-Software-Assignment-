@@ -1,6 +1,7 @@
 package com.jj.macbookpro.mobiledevassignment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,14 +27,10 @@ public class insertDetails extends Activity{
     EditText bookCategory;
     EditText bookComment;
     EditText ISBN;
-    EditText currentlyRading;
-    EditText wanttoread;
-    EditText haveRead;
 
-    CheckBox checkedRead, checkWantToRead,checkCurrentlyReading;
+    CheckBox checkedRead,checkCurrentlyReading;
 
     String strngCheckedRead = null;
-    //String stringCheckWantToRead = null;
     String stringCheckCurrentlyReading = null;
 
 
@@ -62,13 +59,6 @@ public class insertDetails extends Activity{
                         strngCheckedRead = "False";
                     }
 
-                    // checkbox for user if they want to read the book
-//                    if(checkWantToRead.isChecked()) {
-//                        stringCheckWantToRead = "True";
-//                    }
-//                    else{
-//                        stringCheckWantToRead = "False";
-//                    }
 
                     // checkbox for user to tick if they are currenlty reading the book
                     if(checkCurrentlyReading.isChecked()) {
@@ -85,26 +75,17 @@ public class insertDetails extends Activity{
                     bookCategory = (EditText) findViewById(R.id.editText_bookcategory);
                     bookComment = (EditText) findViewById(R.id.editText_comment);
                     ISBN = (EditText) findViewById(R.id.editText_ISBN);
-                    //currentlyRading = (EditText) findViewById(R.id.currently_reading);
-                    //wanttoread = (EditText) findViewById(R.id.wantToRead);
-                    //haveRead = (EditText) findViewById(R.id.editText_bookhave);
 
 
-                        db.insertBook(bookName.getText().toString(),
-                                bookAuthor.getText().toString(),
-                                bookCategory.getText().toString(),
-                                bookComment.getText().toString(),
-                                ISBN.getText().toString(),
-                                stringCheckCurrentlyReading,
-                                strngCheckedRead);
+                    // Promp the user with a confiramtion box on whether or not to insert the details.
+                    insertMessage(bookName.getText().toString(),
+                            bookAuthor.getText().toString(),
+                            bookCategory.getText().toString(),
+                            bookComment.getText().toString(),
+                            ISBN.getText().toString(),
+                            stringCheckCurrentlyReading,
+                            strngCheckedRead);
 
-
-
-                    db.close();
-
-                    // return to the home screen.
-                    Intent returnScreen = new Intent(insertDetails.this, MainActivity.class);
-                    startActivity(returnScreen);
                 } catch (Exception e) {
 
                     e.printStackTrace();
@@ -120,15 +101,45 @@ public class insertDetails extends Activity{
 
             }
         });
-
-
-
-
     }
 
+    // prompt essage displayed to the user, the book details are passed over, if the user selects "yes",
+    // the book is added to the database, if clicked "no", user is returned to the adding screen.
 
+    public void insertMessage(final String bookName, final String bookAuthor, final String bookCateogry, final String bookComment,
+                              final String isbn,  final String cReading, final String hRead) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch(which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        db.insertBook(bookName,
+                                bookAuthor,
+                                bookCateogry,
+                                bookComment,
+                                isbn,
+                                cReading,
+                                hRead);
 
+                        db.close();
 
+                        Intent returnScreen = new Intent(insertDetails.this,listBooks.class);
+                        startActivity(returnScreen);
+                        Toast.makeText(insertDetails.this, "Book Inserted",Toast.LENGTH_LONG).show();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Insert Book \nBook Title: "+ bookName +"\n" +
+                "Book Author: "+bookAuthor)
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
 
 
 

@@ -97,7 +97,7 @@ public class DBManager {
 
     public Cursor getAll() {
         Cursor mCursor = db.rawQuery(
-                "SELECT DISTINCT * FROM Book;", null);
+                "SELECT DISTINCT * FROM '"+ TABLE_NAME + "';", null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -113,7 +113,7 @@ public class DBManager {
         String[] column = new String[] {KEY_TASK_AUTHOR};
         //String whereClause = "Author = 'Y'";
         //Cursor mCursor = db.query(true,TABLE_NAME,column,null,null,null,null,null,null);
-        Cursor mCursor = db.query(true,TABLE_NAME,null,null,null,KEY_TASK_AUTHOR,null,null,null);
+        Cursor mCursor = db.query(true, TABLE_NAME, null, null, null, KEY_TASK_AUTHOR, null, null, null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -125,7 +125,7 @@ public class DBManager {
 
     public Cursor selectAuthorDB(String name)
     {
-        Cursor bookInfo = db.rawQuery("SELECT * FROM BOOK where Author = '"+ name + "';",null);
+        Cursor bookInfo = db.rawQuery("SELECT * FROM '"+ TABLE_NAME +"' where Author = '" + name + "';", null);
 
         if (bookInfo != null) {
             bookInfo.moveToFirst();
@@ -137,7 +137,7 @@ public class DBManager {
 
 
     public Cursor getBookInformation(String bookName) {
-        Cursor bookInfo = db.rawQuery("SELECT * FROM BOOK where Book_Name = '"+ bookName + "';",null);
+        Cursor bookInfo = db.rawQuery("SELECT * FROM '"+ TABLE_NAME + "' where Book_Name = '"+ bookName + "';",null);
 
         if (bookInfo != null) {
             bookInfo.moveToFirst();
@@ -146,13 +146,26 @@ public class DBManager {
         return bookInfo;
     }
 
-    public Cursor delete(String bookid) {
-        Cursor deleteBook = db.rawQuery("DELETE FROM BOOK WHERE ISBN ='"+ bookid + "';",null);
+    public void delete(String bookid) {
+        Cursor deleteBook = db.rawQuery("DELETE FROM '"+ TABLE_NAME + "' WHERE ISBN ='"+ bookid + "';",null);
 
         if (deleteBook != null) {
             deleteBook.moveToFirst();
         }
 
-        return  deleteBook;
+        //return  deleteBook;
+    }
+
+    public void updateStauts(String cReading,String Completed, String isbn) {
+
+        try {
+            String updateSQL = "UPDATE Book SET Currently_Reading ='" + cReading + "' WHERE ISBN ='" + isbn + "'";
+            String updateSQL2 = "UPDATE Book SET Have_Read ='" + Completed + "' WHERE ISBN ='" + isbn + "'";
+
+            db.execSQL(updateSQL);
+            db.execSQL(updateSQL2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

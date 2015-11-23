@@ -53,7 +53,7 @@ public class MyCursorAdapter2 extends CursorAdapter {
         }
 
         if(userCompletedBook.equals("True") && (userCurrentlyReading.equals("False") ) ) {
-            haveRead.setImageResource(R.drawable.tick);
+            haveRead.setImageResource(R.drawable.tick_50_x_50);
         }
         // Populate fields with extracted properties
         bookName.setText(books);

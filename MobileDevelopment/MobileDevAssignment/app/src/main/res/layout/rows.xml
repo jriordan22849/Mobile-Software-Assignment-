@@ -11,10 +11,9 @@
         android:id="@+id/button2"
         android:background="#FFFFFFFF"
         android:onClick="DeleteBook"
-        android:layout_marginEnd="35dp"
+        android:src="@drawable/deleteicon"
         android:layout_alignTop="@+id/textView_book_table"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/deleteicon"/>
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         style="?android:attr/buttonStyleSmall"
@@ -55,7 +54,8 @@
         android:id="@+id/textView_name"
         android:textSize="20dp"
         android:layout_alignTop="@+id/book_name"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignStart="@+id/button3"
+        android:textColor="#0f9ef7" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +65,8 @@
         android:textSize="20dp"
         android:layout_marginTop="29dp"
         android:layout_below="@+id/book_name"
-        android:layout_alignStart="@+id/textView_name" />
+        android:layout_alignStart="@+id/textView_name"
+        android:textColor="#0f9ef7" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +76,8 @@
         android:textSize="20dp"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/textView_author"
-        android:layout_alignStart="@+id/textView_author" />
+        android:layout_alignStart="@+id/textView_author"
+        android:textColor="#0f9ef7" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,7 +87,8 @@
         android:textSize="20dp"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/textView_category"
-        android:layout_alignStart="@+id/textView_category" />
+        android:layout_alignStart="@+id/textView_category"
+        android:textColor="#0f9ef7" />
 
 
 
@@ -97,28 +100,31 @@
         android:textSize="20dp"
         android:layout_below="@+id/textView_comment"
         android:layout_alignStart="@+id/textView_comment"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:textColor="#0f9ef7" />
 
-    <TextView
+
+
+    <CheckBox android:id="@+id/checkbox_reading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Currently Reading:"
-        android:id="@+id/textView_cReading"
+        android:text="Are you reading this book?"
         android:textSize="20dp"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/textView_isbn"
-        android:layout_alignStart="@+id/textView_isbn" />
+        android:layout_alignStart="@+id/textView_isbn"
+        android:textColor="@android:color/black" />
 
-
-    <TextView
+    <CheckBox android:id="@+id/checkbox_have_read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have Read:"
-        android:id="@+id/textView_hRead"
+        android:text="Completed book?"
         android:textSize="20dp"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/textView_cReading"
-        android:layout_alignStart="@+id/textView_cReading" />
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/checkbox_reading"
+        android:layout_alignStart="@+id/checkbox_reading"
+        android:textColor="@android:color/black" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -127,7 +133,8 @@
         android:id="@+id/displayname"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_name"
-        android:layout_toEndOf="@+id/textView_author" />
+        android:layout_toEndOf="@+id/textView_author"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,7 +143,8 @@
         android:id="@+id/displayauthor"
         android:textSize="20dp"
         android:layout_above="@+id/textView_category"
-        android:layout_alignStart="@+id/displayname" />
+        android:layout_alignStart="@+id/displayname"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -145,7 +153,8 @@
         android:id="@+id/displaycategorytextView2"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_category"
-        android:layout_toEndOf="@+id/textView_category" />
+        android:layout_toEndOf="@+id/textView_category"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -154,7 +163,8 @@
         android:id="@+id/displayComment"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_comment"
-        android:layout_toEndOf="@+id/textView_comment" />
+        android:layout_toEndOf="@+id/textView_comment"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -163,26 +173,17 @@
         android:id="@+id/dipslayisbn"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_isbn"
-        android:layout_alignStart="@+id/book_name" />
+        android:layout_alignStart="@+id/book_name"
+        android:textColor="@android:color/black" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/displycReading"
-        android:textSize="20dp"
-        android:layout_alignBottom="@+id/textView_cReading"
-        android:layout_toEndOf="@+id/textView_cReading" />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/displayhRead"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/textView_hRead"
-        android:layout_toEndOf="@+id/textView_hRead" />
+        android:text="View Book Online"
+        android:id="@+id/button_book_online"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/checkbox_have_read"
+        android:layout_toStartOf="@+id/button2"
+        android:onClick = "webViewforBook"/>
 
 </RelativeLayout>

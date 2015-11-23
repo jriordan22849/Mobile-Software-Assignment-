@@ -30,11 +30,11 @@ public class MyCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         // Find fields to populate in inflated template
 
-        TextView bookAuthor = (TextView) view.findViewById(R.id.TextView_label_book_author);
+        TextView bookAuthor = (TextView) view.findViewById(R.id.TextView_author);
         // Extract properties from cursor
         String author = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_AUTHOR));
         // Populate fields with extracted properties
-        bookAuthor.setText("Author: " + author);
+        bookAuthor.setText(author);
 
     }
 }

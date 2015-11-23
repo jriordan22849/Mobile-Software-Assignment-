@@ -31,8 +31,8 @@ public class MyAuthorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         ImageView myImage = (ImageView) view.findViewById(R.id.imageForBookStatus);
         // Find fields to populate in inflated template
-        TextView bookName = (TextView) view.findViewById(R.id.book_name_author);
-        TextView bookCategory = (TextView) view.findViewById(R.id.book_category_author);
+        TextView bookName = (TextView) view.findViewById(R.id.book_name_author_field);
+        TextView bookCategory = (TextView) view.findViewById(R.id.textView_category_field);
         // Extract properties from cursor
         String category = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_CATEGORY));
         String bookNameColumn = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_NAME));
@@ -50,11 +50,11 @@ public class MyAuthorAdapter extends CursorAdapter {
         }
 
         if(userCompletedBook.equals("True") && (userCurrentlyReading.equals("False") ) ) {
-            myImage.setImageResource(R.drawable.tick);
+            myImage.setImageResource(R.drawable.tick_50_x_50);
         }
         // Populate fields with extracted properties
-        bookName.setText("Book Name: " + bookNameColumn);
-        bookCategory.setText("Category: " +category);
+        bookName.setText(bookNameColumn);
+        bookCategory.setText(category);
 
     }
 }
