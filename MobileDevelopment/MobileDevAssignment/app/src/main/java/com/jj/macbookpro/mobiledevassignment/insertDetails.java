@@ -76,15 +76,29 @@ public class insertDetails extends Activity{
                     bookComment = (EditText) findViewById(R.id.editText_comment);
                     ISBN = (EditText) findViewById(R.id.editText_ISBN);
 
+                    String checkBookName = bookName.getText().toString();
+                    String checkBookAuthor = bookAuthor.getText().toString();
+                    String checkBookCategory = bookCategory.getText().toString();
+                    String checkBookComment = bookComment.getText().toString();
+                    String checkBookISBN = ISBN.getText().toString();
+
 
                     // Promp the user with a confiramtion box on whether or not to insert the details.
-                    insertMessage(bookName.getText().toString(),
-                            bookAuthor.getText().toString(),
-                            bookCategory.getText().toString(),
-                            bookComment.getText().toString(),
-                            ISBN.getText().toString(),
-                            stringCheckCurrentlyReading,
-                            strngCheckedRead);
+
+                    // Error Checking for insert, all details must be entered in
+                    if ( (checkBookName.trim().equals("") ) || (checkBookAuthor.trim().equals("")) || (checkBookCategory.trim().equals(""))
+                     || (checkBookComment.trim().equals("")) || (checkBookISBN.trim().equals(""))) {
+                        Toast.makeText(insertDetails.this, "Please enter in all the details",Toast.LENGTH_LONG).show();
+                        return;
+                    } else {
+                        insertMessage(bookName.getText().toString(),
+                                bookAuthor.getText().toString(),
+                                bookCategory.getText().toString(),
+                                bookComment.getText().toString(),
+                                ISBN.getText().toString(),
+                                stringCheckCurrentlyReading,
+                                strngCheckedRead);
+                    }
 
                 } catch (Exception e) {
 

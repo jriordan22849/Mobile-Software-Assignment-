@@ -58,9 +58,9 @@
         android:id="@+id/button_bookName"
         android:onClick="listBookNames"
         android:background="#0F9EF7"
+        android:textColor="@android:color/black"
         android:layout_below="@+id/book"
-        android:layout_alignParentEnd="true"
-        android:textColor="@android:color/black" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="40dp"
@@ -69,9 +69,9 @@
         android:id="@+id/button_add"
         android:onClick="addBook"
         android:background="#f9f9f9"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/book"
-        android:layout_marginBottom="29dp" />
+        android:layout_marginEnd="29dp"
+        android:layout_above="@+id/listView_books"
+        android:layout_alignEnd="@+id/book" />
 
 
 </RelativeLayout>

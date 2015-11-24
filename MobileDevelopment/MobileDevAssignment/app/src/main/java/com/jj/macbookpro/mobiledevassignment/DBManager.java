@@ -81,16 +81,15 @@ public class DBManager {
                            String isbn, String cReading, String read) {
         ContentValues initialValues = new ContentValues();
 
-        if(!name.equals("") || !author.equals("") || !isbn.equals("")|| !category.equals("")) {
-            initialValues.put(KEY_TASK_NAME, name);
-            initialValues.put(KEY_TASK_AUTHOR, author);
-            initialValues.put(KEY_TASK_CATEGORY, category);
-            initialValues.put(KEY_TASK_COMMENT, comment);
-            initialValues.put(KEY_TASK_ISBN, isbn);
-            initialValues.put(KEY_TASK_CREADING, cReading);
-            //initialValues.put(KEY_TASK_WREADING, wRead);
-            initialValues.put(KEY_TASK_READ, read);
-        }
+        initialValues.put(KEY_TASK_NAME, name);
+        initialValues.put(KEY_TASK_AUTHOR, author);
+        initialValues.put(KEY_TASK_CATEGORY, category);
+        initialValues.put(KEY_TASK_COMMENT, comment);
+        initialValues.put(KEY_TASK_ISBN, isbn);
+        initialValues.put(KEY_TASK_CREADING, cReading);
+        //initialValues.put(KEY_TASK_WREADING, wRead);
+        initialValues.put(KEY_TASK_READ, read);
+
         return db.insert(TABLE_NAME, null, initialValues);
     }
 

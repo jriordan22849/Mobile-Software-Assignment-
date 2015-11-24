@@ -76,8 +76,29 @@ public class selectedAuthor extends Activity {
             }
         });
 
+        authorBooksList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() { //list is my listView
 
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           final int pos, long id) {
+                //Whatever you wanna do
+                Cursor myCursor = (Cursor) arg0.getItemAtPosition(pos);
+                String passISBN = myCursor.getString(5);
+                try {
+                    db.open();
+                    db.delete(passISBN);
 
+                    Intent refreshPage = new Intent(selectedAuthor.this, MainActivity.class);
+                    startActivity(refreshPage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                db.close();
+
+                return true;
+            }
+        });
     }
 
 

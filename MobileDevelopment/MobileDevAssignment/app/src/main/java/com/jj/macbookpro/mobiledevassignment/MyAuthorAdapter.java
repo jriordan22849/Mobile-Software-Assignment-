@@ -57,4 +57,6 @@ public class MyAuthorAdapter extends CursorAdapter {
         bookCategory.setText(category);
 
     }
+
+
 }
