@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,15 +29,18 @@ public class selectedBookDetails extends Activity {
 
     CheckBox checkedRead, haveReadCheckBox;
 
+    EditText bookComment;
+
     String strngCheckedRead = null;
     String stringCompletedBook = null;
+    String CommentUpdate =null;
 
-    Button onlineButton;
+    ImageButton onlineButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rows);
-        onlineButton = (Button) findViewById(R.id.button_book_online);
+        onlineButton = (ImageButton) findViewById(R.id.button_book_online);
 
         // Get info passed with intent
         final String bookName = getIntent().getExtras().getString("SELECTED_NAME");
@@ -66,8 +70,11 @@ public class selectedBookDetails extends Activity {
 
             TextView bookAuthor = (TextView) findViewById(R.id.displayauthor);
             TextView bookCategory = (TextView) findViewById(R.id.displaycategorytextView2);
-            TextView bookComment = (TextView) findViewById(R.id.displayComment);
             TextView bookisbn = (TextView) findViewById(R.id.dipslayisbn);
+
+
+            TextView bookComment = (TextView) findViewById(R.id.displayComment);
+            CommentUpdate = bookComment.getText().toString();
             //TextView havRead = (TextView) findViewById(R.id.displayhRead);
 
             // Check boxes for update
@@ -89,6 +96,8 @@ public class selectedBookDetails extends Activity {
             bookCategory.setText(category);
             bookComment.setText(comment);
             bookisbn.setText(isbn);
+
+
            // havRead.setText(haveRead);
             db.close();
         } catch (Exception e) {
@@ -123,6 +132,7 @@ public class selectedBookDetails extends Activity {
                         stringCompletedBook = "False";
                     }
 
+                    //CommentUpdate = bookComment.getText().toString();
                     alertMessage(isbn, bookName);
                     db.updateStauts(strngCheckedRead, stringCompletedBook, isbn);
 

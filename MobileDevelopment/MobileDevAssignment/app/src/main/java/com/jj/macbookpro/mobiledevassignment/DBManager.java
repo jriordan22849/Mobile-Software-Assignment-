@@ -161,9 +161,11 @@ public class DBManager {
         try {
             String updateSQL = "UPDATE Book SET Currently_Reading ='" + cReading + "' WHERE ISBN ='" + isbn + "'";
             String updateSQL2 = "UPDATE Book SET Have_Read ='" + Completed + "' WHERE ISBN ='" + isbn + "'";
+            //String updateSQL3 = "UPDATE Book SET Comment ='" + comment + "' WHERE ISBN ='" + isbn + "'";
 
             db.execSQL(updateSQL);
             db.execSQL(updateSQL2);
+            //db.execSQL(updateSQL3);
         } catch (Exception e) {
             e.printStackTrace();
         }
