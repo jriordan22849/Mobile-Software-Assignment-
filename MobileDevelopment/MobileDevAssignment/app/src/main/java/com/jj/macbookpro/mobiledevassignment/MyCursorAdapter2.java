@@ -34,6 +34,7 @@ public class MyCursorAdapter2 extends CursorAdapter {
         TextView bookCategory = (TextView) view.findViewById(R.id.TextView_category_name);
 
         ImageView haveRead = (ImageView) view.findViewById(R.id.imageRead);
+
         // Extract properties from cursor
         String books = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_NAME));
         String category = cursor.getString(cursor.getColumnIndexOrThrow(DBManager.KEY_TASK_CATEGORY));

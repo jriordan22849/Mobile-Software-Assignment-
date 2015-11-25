@@ -109,10 +109,19 @@ public class DBManager {
     // Return a cursor contain distinct author names to be displayed.
     public Cursor getDistinctAuthor()
     {
-        String[] column = new String[] {KEY_TASK_AUTHOR};
-        //String whereClause = "Author = 'Y'";
-        //Cursor mCursor = db.query(true,TABLE_NAME,column,null,null,null,null,null,null);
         Cursor mCursor = db.query(true, TABLE_NAME, null, null, null, KEY_TASK_AUTHOR, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        return mCursor;
+
+    }
+
+    public Cursor getDistinctCategory()
+    {
+        Cursor mCursor = db.query(true, TABLE_NAME, null, null, null, KEY_TASK_CATEGORY, null, null, null);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -124,7 +133,7 @@ public class DBManager {
 
     public Cursor selectAuthorDB(String name)
     {
-        Cursor bookInfo = db.rawQuery("SELECT * FROM '"+ TABLE_NAME +"' where Author = '" + name + "';", null);
+        Cursor bookInfo = db.rawQuery("SELECT * FROM '" + TABLE_NAME + "' where Author = '" + name + "';", null);
 
         if (bookInfo != null) {
             bookInfo.moveToFirst();
@@ -151,8 +160,6 @@ public class DBManager {
         if (deleteBook != null) {
             deleteBook.moveToFirst();
         }
-
-        //return  deleteBook;
     }
 
     public void updateStauts(String cReading,String Completed, String isbn) {
@@ -160,13 +167,31 @@ public class DBManager {
         try {
             String updateSQL = "UPDATE Book SET Currently_Reading ='" + cReading + "' WHERE ISBN ='" + isbn + "'";
             String updateSQL2 = "UPDATE Book SET Have_Read ='" + Completed + "' WHERE ISBN ='" + isbn + "'";
-            //String updateSQL3 = "UPDATE Book SET Comment ='" + comment + "' WHERE ISBN ='" + isbn + "'";
 
             db.execSQL(updateSQL);
             db.execSQL(updateSQL2);
-            //db.execSQL(updateSQL3);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public boolean checkISBN(String isbn) {
+        Cursor isbnCheck = db.rawQuery("SELECT * FROM '" + TABLE_NAME +"' WHERE ISBN ='"+ isbn +"';", null);
+
+        if(isbnCheck.getCount() <= 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public Cursor sortByCategory(String category) {
+        Cursor myCursor = db.rawQuery("SELECT DISTINCT * FROM '" + TABLE_NAME +"' WHERE Category ='"+ category +"';",null);
+
+        if (myCursor != null) {
+            myCursor.moveToFirst();
+        }
+
+        return myCursor;
+    }
+
 }

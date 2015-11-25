@@ -3,15 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
  tools:context=".MainActivity"
-    android:background="#f9f9f9">
+    android:background="#ffffff">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/toolbar_blue"
-        android:layout_above="@+id/listView_books"
-        android:layout_alignParentStart="true" />
 
 
 
@@ -22,11 +15,11 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:textSize="25dp"
-        android:textColor="#ffffff"
+        android:textColor="@android:color/black"
+        android:paddingTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/button_author"
-        android:layout_marginStart="35dp"
-        android:paddingTop="10dp" />
+        android:layout_marginStart="42dp" />
 
 
     <ListView
@@ -42,7 +35,8 @@
         android:drawSelectorOnTop="false"
         android:textFilterEnabled="false"
         android:headerDividersEnabled="true"
-        android:footerDividersEnabled="true" />
+        android:footerDividersEnabled="true"
+        android:layout_weight="1"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -52,7 +46,7 @@
         android:onClick="listBookAuthor"
         android:background="#35ADF8"
         android:layout_below="@+id/book"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,19 +55,20 @@
         android:id="@+id/button_bookName"
         android:onClick="listBookNames"
         android:background="#35ADF8"
-        android:layout_above="@+id/listView_books"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/book"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/add_icon"
         android:id="@+id/button_add"
         android:onClick="addBook"
-        android:background="#f9f9f9"
-        android:layout_marginEnd="29dp"
-        android:layout_above="@+id/listView_books"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/book" />
+
+
 
 
 </RelativeLayout>

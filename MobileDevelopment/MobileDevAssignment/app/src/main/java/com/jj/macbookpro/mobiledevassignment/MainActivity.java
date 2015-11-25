@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.database.Cursor;
@@ -24,13 +26,13 @@ public class MainActivity extends Activity {
     // pass our context
     DBManager db = new DBManager(this);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         final ListView listView = (ListView) findViewById(R.id.listView_books);
-
         //
         try {
             db.open();
@@ -50,12 +52,6 @@ public class MainActivity extends Activity {
                 try {
                     Cursor myCursor = (Cursor) av.getItemAtPosition(position);
                     String selection = myCursor.getString(2);
-                    Context context = getApplicationContext();
-                    CharSequence text = selection;
-                    int dur = Toast.LENGTH_LONG;
-
-//                    Toast toast = Toast.makeText(context,text,dur);
-//                    toast.show();
 
 
                     Intent selectedAuthorName = new Intent(MainActivity.this, selectedAuthor.class);

@@ -8,13 +8,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,16 +34,67 @@ public class listBooks extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        Spinner spinner = (Spinner) findViewById(R.id.Category_spinner);
+
+//        this.arraySpinner = new String[] {
+//                "Action", "Comedy"
+//        };
+
+
+
         final ListView listView = (ListView) findViewById(R.id.listView_books);
         try {
             db.open();
             Cursor result = db.getAll();
             MyCursorAdapter2 cursorAdapter = new MyCursorAdapter2(listBooks.this, result);
             listView.setAdapter(cursorAdapter);
+
+
+            Cursor myDistinctCategory = db.getDistinctCategory();
+            ArrayList<String> adapter = new ArrayList<String>();
+            if(myDistinctCategory.moveToFirst()) {
+                do {
+                    String cat = myDistinctCategory.getString(3);
+                    adapter.add(cat);
+                }while(myDistinctCategory.moveToNext());
+
+                String[] arraySpinner = new String[adapter.size()];
+                arraySpinner = adapter.toArray(arraySpinner);
+
+                ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,arraySpinner);
+                spinner.setAdapter(myAdapter);
+            }
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+                String selected = parentView.getItemAtPosition(position).toString();
+
+                try {
+                    db.open();
+                    Cursor getData = db.sortByCategory(selected);
+                    MyCursorAdapter2 cursorAdapter = new MyCursorAdapter2(listBooks.this, getData);
+                    listView.setAdapter(cursorAdapter);
+                    db.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+
 
         // select book name from the list and create an intent
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,9 +150,4 @@ public class listBooks extends Activity {
             e.printStackTrace();
         }
     }
-
-    // select book from the list and to display its details using an intent.
-
-
-
 }

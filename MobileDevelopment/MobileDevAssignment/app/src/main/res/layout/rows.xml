@@ -9,11 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:background="#0F9EF7"
         android:onClick="DeleteBook"
         android:src="@drawable/deleteicon"
         android:layout_alignBottom="@+id/imageView"
-        android:layout_toEndOf="@+id/checkbox_reading" />
+        android:layout_toEndOf="@+id/checkbox_reading"
+        android:background="#154EB2"/>
 
     <ImageButton
         style="?android:attr/buttonStyleSmall"
@@ -21,12 +21,13 @@
         android:layout_height="wrap_content"
         android:text="Edit"
         android:id="@+id/button3"
-        android:background="#0F9EF7"
+        android:background="#154EB2"
         android:onClick="EditBook"
         android:src="@drawable/editicon"
         android:layout_marginStart="34dp"
         android:layout_alignTop="@+id/button2"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/imageView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -198,7 +199,7 @@
         android:id="@+id/imageView"
         android:src="@drawable/toolbar_blue"
         android:layout_alignBottom="@+id/textView_book_table"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:layout_width="wrap_content"

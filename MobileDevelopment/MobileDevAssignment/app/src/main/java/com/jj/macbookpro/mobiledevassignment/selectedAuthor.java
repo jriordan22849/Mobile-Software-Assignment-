@@ -2,7 +2,9 @@ package com.jj.macbookpro.mobiledevassignment;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -32,8 +34,7 @@ public class selectedAuthor extends Activity {
             db.open();
             String authorName = getIntent().getExtras().getString("SELECTED_AUTHOR");
             Cursor result = db.selectAuthorDB(authorName);
-//            TextView bookAuthor = (TextView) findViewById(R.id.TextView_bookAuthor);
-//            bookAuthor.setText(authorName);selectAuthorDB
+
             // Display the Author Name at the top of the screen
             TextView authorNameAtTop = (TextView) findViewById(R.id.AuthorNameLAbel);
             authorNameAtTop.setText("Author: " +authorName);
@@ -59,12 +60,6 @@ public class selectedAuthor extends Activity {
                     Cursor myCursor = (Cursor) av.getItemAtPosition(position);
                     String selection = myCursor.getString(1);
                     String passISBN = myCursor.getString(5);
-                    Context context = getApplicationContext();
-                    CharSequence text = selection;
-                    int dur = Toast.LENGTH_LONG;
-
-//                    Toast toast = Toast.makeText(context,text,dur);
-//                    toast.show();
 
                     Intent selectedBookName = new Intent(selectedAuthor.this, selectedBookDetails.class);
                     selectedBookName.putExtra("SELECTED_NAME", selection);
@@ -81,12 +76,16 @@ public class selectedAuthor extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            final int pos, long id) {
-                //Whatever you wanna do
+                //Retrive the informatiom from the cursor, delete the item from the database and toast the book name deleted.
                 Cursor myCursor = (Cursor) arg0.getItemAtPosition(pos);
+                String bookName = myCursor.getString(1);
                 String passISBN = myCursor.getString(5);
+                // alertMessage(passISBN);
                 try {
                     db.open();
+
                     db.delete(passISBN);
+                    Toast.makeText(selectedAuthor.this, "Deleted book: " + bookName, Toast.LENGTH_LONG).show();
 
                     Intent refreshPage = new Intent(selectedAuthor.this, MainActivity.class);
                     startActivity(refreshPage);
@@ -100,6 +99,4 @@ public class selectedAuthor extends Activity {
             }
         });
     }
-
-
 }

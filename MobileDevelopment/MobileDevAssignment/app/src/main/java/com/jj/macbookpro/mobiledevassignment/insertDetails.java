@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,6 @@ public class insertDetails extends Activity{
         setContentView(R.layout.insert_details_layout);
 
         checkedRead = (CheckBox) findViewById(R.id.editText_bookhave);
-        //checkWantToRead = (CheckBox) findViewById(R.id.wantToRead);
         checkCurrentlyReading = (CheckBox) findViewById(R.id.currently_reading);
 
 
@@ -81,9 +81,6 @@ public class insertDetails extends Activity{
                     String checkBookCategory = bookCategory.getText().toString();
                     String checkBookComment = bookComment.getText().toString();
                     String checkBookISBN = ISBN.getText().toString();
-
-
-                    // Promp the user with a confiramtion box on whether or not to insert the details.
 
                     // Error Checking for insert, all details must be entered in
                     if ( (checkBookName.trim().equals("") ) || (checkBookAuthor.trim().equals("")) || (checkBookCategory.trim().equals(""))
@@ -127,13 +124,21 @@ public class insertDetails extends Activity{
             public void onClick(DialogInterface dialog, int which) {
                 switch(which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        db.insertBook(bookName,
-                                bookAuthor,
-                                bookCateogry,
-                                bookComment,
-                                isbn,
-                                cReading,
-                                hRead);
+
+//                        boolean check = db.checkISBN(isbn);
+//                        if(check){
+//                            Toast.makeText(insertDetails.this, "ISBN already exists",Toast.LENGTH_LONG).show();
+//                        }
+//                        if(!check){
+                            db.insertBook(bookName,
+                                    bookAuthor,
+                                    bookCateogry,
+                                    bookComment,
+                                    isbn,
+                                    cReading,
+                                    hRead);
+
+                        //}
 
                         db.close();
 
