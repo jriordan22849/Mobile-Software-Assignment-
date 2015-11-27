@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 /**
  * Created by macbookpro on 12/11/15.
+ * Student ID: C13432152
+ * Student Name: Jonathan Riordan
  */
 public class MyCursorAdapter2 extends CursorAdapter {
 

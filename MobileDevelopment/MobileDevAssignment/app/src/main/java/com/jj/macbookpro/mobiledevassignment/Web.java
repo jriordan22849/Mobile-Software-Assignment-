@@ -2,10 +2,10 @@ package com.jj.macbookpro.mobiledevassignment;
 
 /**
  * Created by macbookpro on 23/11/2015.
+ * Student ID: C13432152
+ * Student Name: Jonathan Riordan
  * This class is used to receive the book name, once the book name has been received, all the spaces are removed in the string
  * and replaced with plus signs, Then we ammend the url with the book name and to be dispalyed in the webview.
- * http://onlinebooks.library.upenn.edu/webbin/book/search?author=&amode=words&title=Crime+and+Punishment+&tmode=words
- * http://onlinebooks.library.upenn.edu/webbin/book/search?author=&amode=words&title=spy+&tmode=words
  */
 import android.app.Activity;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ public class Web extends Activity {
         WebView myWebView = (WebView) findViewById(R.id.webview);
         myWebView.setWebViewClient(new WebViewClient());
 
-        // ammend the URL, i placed the book name into the url so the site will look for the book.
+        // ammeneded the URL, i placed the book name into the url so the site will look for the book.
         myWebView.loadUrl("http://onlinebooks.library.upenn.edu/webbin/book/search?author=&amode=words&title="+ bookName +"&tmode=words");
     }
 

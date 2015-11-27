@@ -10,7 +10,9 @@ import android.widget.Toast;
 import java.sql.SQLException;
 
 /**
- * Created by macbookpro on 12/11/15.
+ *  Student ID: C13432152
+ * Student Name: Jonathan Riordan
+ * Create the database, has sql functions to manipulate my book table.
  */
 public class DBManager {
 
@@ -26,7 +28,6 @@ public class DBManager {
     static final String KEY_TASK_COMMENT = "Comment";
     static final String KEY_TASK_ISBN = "ISBN";
     static final String KEY_TASK_CREADING = "Currently_Reading";
-    static final String KEY_TASK_WREADING = "Want_To_Read";
     static final String KEY_TASK_READ = "Have_Read";
 
     final Context context;
@@ -87,13 +88,13 @@ public class DBManager {
         initialValues.put(KEY_TASK_COMMENT, comment);
         initialValues.put(KEY_TASK_ISBN, isbn);
         initialValues.put(KEY_TASK_CREADING, cReading);
-        //initialValues.put(KEY_TASK_WREADING, wRead);
         initialValues.put(KEY_TASK_READ, read);
 
         return db.insert(TABLE_NAME, null, initialValues);
     }
 
 
+    // return all the results from the table as a cursor.
     public Cursor getAll() {
         Cursor mCursor = db.rawQuery(
                 "SELECT DISTINCT * FROM '"+ TABLE_NAME + "';", null);
@@ -106,7 +107,7 @@ public class DBManager {
 
     }
 
-    // Return a cursor contain distinct author names to be displayed.
+    // Return a cursor containing distinct author names to be displayed.
     public Cursor getDistinctAuthor()
     {
         Cursor mCursor = db.query(true, TABLE_NAME, null, null, null, KEY_TASK_AUTHOR, null, null, null);
@@ -119,6 +120,7 @@ public class DBManager {
 
     }
 
+    // Return a cursor containing a distinct category.
     public Cursor getDistinctCategory()
     {
         Cursor mCursor = db.query(true, TABLE_NAME, null, null, null, KEY_TASK_CATEGORY, null, null, null);
@@ -131,6 +133,7 @@ public class DBManager {
 
     }
 
+    // Returns a cursor where a author names equals the variable passed into the function.
     public Cursor selectAuthorDB(String name)
     {
         Cursor bookInfo = db.rawQuery("SELECT * FROM '" + TABLE_NAME + "' where Author = '" + name + "';", null);
@@ -144,6 +147,7 @@ public class DBManager {
     }
 
 
+    // Returns a cursor containing all the information as a book name as the id.
     public Cursor getBookInformation(String bookName) {
         Cursor bookInfo = db.rawQuery("SELECT * FROM '"+ TABLE_NAME + "' where Book_Name = '"+ bookName + "';",null);
 
@@ -154,6 +158,7 @@ public class DBManager {
         return bookInfo;
     }
 
+    // Delete a book from the table using the book isbn as the identifyer.
     public void delete(String bookid) {
         Cursor deleteBook = db.rawQuery("DELETE FROM '"+ TABLE_NAME + "' WHERE ISBN ='"+ bookid + "';",null);
 
@@ -162,6 +167,8 @@ public class DBManager {
         }
     }
 
+
+    // Updated slected book columns currently reading and have read.
     public void updateStauts(String cReading,String Completed, String isbn) {
 
         try {
@@ -184,6 +191,7 @@ public class DBManager {
         return false;
     }
 
+    // Return a cursor containing a distinct category.
     public Cursor sortByCategory(String category) {
         Cursor myCursor = db.rawQuery("SELECT DISTINCT * FROM '" + TABLE_NAME +"' WHERE Category ='"+ category +"';",null);
 

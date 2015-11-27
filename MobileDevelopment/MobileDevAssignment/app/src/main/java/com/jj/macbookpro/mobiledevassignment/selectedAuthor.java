@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 /**
  * Created by macbookpro on 15/11/15.
+ * Student ID: C13432152
+ * Student Name: Jonathan Riordan
  */
 public class selectedAuthor extends Activity {
 

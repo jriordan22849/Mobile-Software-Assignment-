@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,17 +17,22 @@ import java.sql.SQLException;
 /**
  * Created by macbookpro on 15/11/15.
  * This class is used to inser the details entered in by the user into the database.
+ * Student ID: C13432152
+ * Student Name: Jonathan Riordan
  */
 public class insertDetails extends Activity{
     // pass our context
     DBManager db = new DBManager(this);
 
+
+    // Declare Edittext
     EditText bookName;
     EditText bookAuthor;
     EditText bookCategory;
     EditText bookComment;
     EditText ISBN;
 
+    // delclare checkbox
     CheckBox checkedRead,checkCurrentlyReading;
 
     String strngCheckedRead = null;

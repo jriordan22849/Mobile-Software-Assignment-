@@ -169,7 +169,7 @@
         android:textColor="@android:color/black"
         android:paddingTop="10dp"
         android:layout_alignBottom="@+id/textView_comment"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_toEndOf="@+id/textView_comment" />
 
     <TextView
         android:layout_width="wrap_content"

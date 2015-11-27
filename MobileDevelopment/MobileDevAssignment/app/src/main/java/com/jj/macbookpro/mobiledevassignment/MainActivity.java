@@ -6,26 +6,23 @@ Student ID: C13432152
 package com.jj.macbookpro.mobiledevassignment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.database.Cursor;
+
+/*
+ *  Student ID: C13432152
+ *  Student Name: Jonathan Riordan
+*/
 
 
 // This is the first screen. It displays the authors in a list to the user
 public class MainActivity extends Activity {
     // pass our context
     DBManager db = new DBManager(this);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

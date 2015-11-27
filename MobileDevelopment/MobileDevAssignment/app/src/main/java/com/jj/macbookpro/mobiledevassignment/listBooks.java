@@ -23,6 +23,8 @@ import java.util.List;
 
 /**
  * Created by macbookpro on 15/11/15.
+ * Student ID: C13432152
+ * Student Name: Jonathan Riordan
  */
 
 // This class displays the book names in a list to the user.
@@ -36,21 +38,19 @@ public class listBooks extends Activity {
 
         Spinner spinner = (Spinner) findViewById(R.id.Category_spinner);
 
-//        this.arraySpinner = new String[] {
-//                "Action", "Comedy"
-//        };
-
-
-
         final ListView listView = (ListView) findViewById(R.id.listView_books);
         try {
             db.open();
+
+            // set the list to the result from the database query
             Cursor result = db.getAll();
             MyCursorAdapter2 cursorAdapter = new MyCursorAdapter2(listBooks.this, result);
             listView.setAdapter(cursorAdapter);
 
 
+            // Receive the distinct category from the database and display it to the spinner.
             Cursor myDistinctCategory = db.getDistinctCategory();
+
             ArrayList<String> adapter = new ArrayList<String>();
             if(myDistinctCategory.moveToFirst()) {
                 do {
@@ -58,6 +58,7 @@ public class listBooks extends Activity {
                     adapter.add(cat);
                 }while(myDistinctCategory.moveToNext());
 
+                // set the array to the size of the adapter.
                 String[] arraySpinner = new String[adapter.size()];
                 arraySpinner = adapter.toArray(arraySpinner);
 
@@ -69,6 +70,8 @@ public class listBooks extends Activity {
             e.printStackTrace();
         }
 
+
+        // gets the seleced category, and returns all the books who category is selected.
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -77,6 +80,7 @@ public class listBooks extends Activity {
 
                 try {
                     db.open();
+                    // get the results from the category selected and display it to the list.
                     Cursor getData = db.sortByCategory(selected);
                     MyCursorAdapter2 cursorAdapter = new MyCursorAdapter2(listBooks.this, getData);
                     listView.setAdapter(cursorAdapter);
@@ -88,9 +92,7 @@ public class listBooks extends Activity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
+            public void onNothingSelected(AdapterView<?> parentView) {}
 
         });
 

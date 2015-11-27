@@ -68,6 +68,18 @@
         android:id="@+id/Category_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_below="@+id/book"
+        android:layout_toEndOf="@+id/textView2"
+        android:focusable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sort by:"
+        android:id="@+id/textView2"
+        android:textSize="15sp"
         android:layout_below="@+id/book"
         android:layout_alignStart="@+id/book" />
 
